@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Chip } from './ui/Chip';
 import { useMode } from '../contexts/ModeContext';
+import { publicAsset } from '../lib/brand';
 
-const benImage = '/assets/ben.png';
-const mattImage = '/assets/matt.png';
+const benImage = publicAsset('assets/ben.png');
+const mattImage = publicAsset('assets/matt.png');
 
 export function Founders() {
   const [hoveredFounder, setHoveredFounder] = useState<number | null>(null);

@@ -9,7 +9,7 @@ import { Process } from '../Process';
 import { Contact } from '../Contact';
 import { Footer } from '../Footer';
 
-export function SearchGroupPage({ onBackToSplash }: { onBackToSplash: () => void }) {
+export function SearchGroupPage() {
   const [activeSection, setActiveSection] = useState('overview');
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export function SearchGroupPage({ onBackToSplash }: { onBackToSplash: () => void
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#FFFFFF] to-[#F3F4F6] text-[#111827]">
       <ModeProvider>
-        <SearchGroupNavigation onBackToSplash={onBackToSplash} />
+        <SearchGroupNavigation />
         
         <main>
           <section id="overview">

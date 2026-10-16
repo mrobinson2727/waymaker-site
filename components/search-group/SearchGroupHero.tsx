@@ -1,6 +1,7 @@
 import { Button } from '../ui/Button';
 import { useMode } from '../../contexts/ModeContext';
 import { TypingEffect } from '../TypingEffect';
+import { publicAsset } from '../../lib/brand';
 import { useRef, useEffect } from 'react';
 
 export function SearchGroupHero() {
@@ -32,9 +33,10 @@ export function SearchGroupHero() {
         loop
         muted
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="https://github.com/Patrick-Sherlund/waymaker/raw/refs/heads/master/WAYMAKER-PRIVATE.mp4" type="video/mp4" />
+        <source src={publicAsset('videos/WAYMAKER-PRIVATE.mp4')} type="video/mp4" />
       </video>
 
       {/* Light Overlay */}
