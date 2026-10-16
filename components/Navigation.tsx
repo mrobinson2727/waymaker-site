@@ -7,7 +7,7 @@ import { ContactButton } from './ui/ContactButton';
 import { useMode } from '../contexts/ModeContext';
 import { publicAsset } from '../lib/brand';
 
-const logoImage = publicAsset('assets/small-logo.png');
+const logoImage = publicAsset('assets/small-logo.webp');
 
 export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,7 +50,7 @@ export function Navigation() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center hover:opacity-80 transition-opacity shrink-0"
             >
-              <img src={logoImage} alt="WayMaker" className="h-9 lg:h-11 w-auto" />
+              <img src={logoImage} alt="WayMaker" width={3140} height={792} className="h-9 lg:h-11 w-auto" />
             </button>
 
             {/* Desktop Navigation - Center Group */}

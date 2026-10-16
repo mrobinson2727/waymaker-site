@@ -9,6 +9,7 @@ import { Process } from './components/Process';
 import { Founders } from './components/Founders';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { PrivacyPage } from './components/PrivacyPage';
 
 function DefensePage() {
   return (
@@ -48,16 +49,17 @@ function DefensePage() {
   );
 }
 
-function BrandView() {
-  const { brand } = useBrand();
-  if (brand === 'waymaker') return <SearchGroupPage />;
+export function SiteView() {
+  const { page } = useBrand();
+  if (page === 'waymaker') return <SearchGroupPage />;
+  if (page === 'privacy') return <PrivacyPage />;
   return <DefensePage />;
 }
 
 export default function App() {
   return (
     <BrandRouter>
-      <BrandView />
+      <SiteView />
     </BrandRouter>
   );
 }

@@ -4,7 +4,7 @@ import { PersonaToggle } from '../ui/PersonaToggle';
 import { BrandToggle } from '../ui/BrandToggle';
 import { publicAsset } from '../../lib/brand';
 
-const logoImage = publicAsset('assets/waymaker-logo-regular-small.png');
+const logoImage = publicAsset('assets/waymaker-logo-regular-small.webp');
 
 export function SearchGroupNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,7 +36,7 @@ export function SearchGroupNavigation() {
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center hover:opacity-80 transition-opacity shrink-0"
             >
-              <img src={logoImage} alt="WayMaker" className="h-9 lg:h-11 w-auto" />
+              <img src={logoImage} alt="WayMaker" width={1024} height={296} className="h-9 lg:h-11 w-auto" />
             </button>
 
             {/* Desktop Navigation - Center Group */}

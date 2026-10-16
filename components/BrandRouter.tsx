@@ -1,46 +1,50 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import { Brand, brandFromPath, brandMeta, pathForBrand } from '../lib/brand'
+import { SitePage, pageFromPath, pathForPage } from '../lib/brand'
+import { applyDocumentMeta } from '../lib/seo'
 
 interface BrandContextValue {
-  brand: Brand
-  navigate: (brand: Brand) => void
+  page: SitePage
+  navigate: (page: SitePage) => void
 }
 
 const BrandContext = createContext<BrandContextValue | undefined>(undefined)
 
-function applyBrandMeta(brand: Brand) {
-  const page = brandMeta[brand]
-  document.title = page.title
-  const description = document.querySelector('meta[name="description"]')
-  if (description) description.setAttribute('content', page.description)
-}
-
-export function BrandRouter({ children }: { children: ReactNode }) {
-  const [brand, setBrand] = useState<Brand>(() => brandFromPath(window.location.pathname))
+export function BrandRouter({
+  children,
+  initialPage,
+}: {
+  children: ReactNode
+  initialPage?: SitePage
+}) {
+  const [page, setPage] = useState<SitePage>(() => {
+    if (initialPage) return initialPage
+    if (typeof window === 'undefined') return 'defense'
+    return pageFromPath(window.location.pathname)
+  })
 
   useEffect(() => {
-    applyBrandMeta(brand)
-  }, [brand])
+    applyDocumentMeta(page)
+  }, [page])
 
   useEffect(() => {
     const onPopState = () => {
-      setBrand(brandFromPath(window.location.pathname))
+      setPage(pageFromPath(window.location.pathname))
       window.scrollTo(0, 0)
     }
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
-  const navigate = (next: Brand) => {
-    if (next !== brand) {
-      window.history.pushState({ brand: next }, '', pathForBrand(next))
-      setBrand(next)
+  const navigate = (next: SitePage) => {
+    if (next !== page) {
+      window.history.pushState({ page: next }, '', pathForPage(next))
+      setPage(next)
     }
     window.scrollTo(0, 0)
   }
 
   return (
-    <BrandContext.Provider value={{ brand, navigate }}>
+    <BrandContext.Provider value={{ page, navigate }}>
       {children}
     </BrandContext.Provider>
   )

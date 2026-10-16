@@ -7,7 +7,7 @@ const options: { id: Brand; label: string }[] = [
 ]
 
 export function BrandToggle({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
-  const { brand, navigate } = useBrand()
+  const { page, navigate } = useBrand()
 
   return (
     <div
@@ -20,7 +20,7 @@ export function BrandToggle({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
       aria-label="Choose a Waymaker brand"
     >
       {options.map((option) => {
-        const selected = brand === option.id
+        const selected = page === option.id
         return (
           <a
             key={option.id}
