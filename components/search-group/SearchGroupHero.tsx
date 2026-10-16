@@ -1,6 +1,7 @@
 import { Button } from '../ui/Button';
 import { useMode } from '../../contexts/ModeContext';
 import { TypingEffect } from '../TypingEffect';
+import { publicAsset } from '../../lib/brand';
 import { useRef, useEffect } from 'react';
 
 export function SearchGroupHero() {
@@ -32,9 +33,13 @@ export function SearchGroupHero() {
         loop
         muted
         playsInline
+        preload="metadata"
+        poster={publicAsset('videos/waymaker-poster.jpg')}
+        width={1920}
+        height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="https://github.com/Patrick-Sherlund/waymaker/raw/refs/heads/master/WAYMAKER-PRIVATE.mp4" type="video/mp4" />
+        <source src={publicAsset('videos/WAYMAKER-PRIVATE.mp4')} type="video/mp4" />
       </video>
 
       {/* Light Overlay */}
@@ -58,16 +63,16 @@ export function SearchGroupHero() {
         {/* Centered Content */}
         <div className="max-w-[1040px] mx-auto text-center space-y-8">
           <div className="space-y-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#DC2626] drop-shadow-[0_1px_2px_rgba(255,255,255,0.25)]">
+            <h1 className="text-xs uppercase tracking-[0.2em] text-[#DC2626] drop-shadow-[0_1px_2px_rgba(255,255,255,0.25)]">
               Executive & Technical Search
-            </p>
-            <h1 className="text-5xl lg:text-7xl text-[#111827] leading-[1.1] drop-shadow-[0_1px_3px_rgba(255,255,255,0.3)]">
+            </h1>
+            <p className="text-5xl lg:text-7xl text-[#111827] leading-[1.1] drop-shadow-[0_1px_3px_rgba(255,255,255,0.3)]">
               <TypingEffect 
                 text="You are who you hire."
                 className="text-5xl lg:text-7xl text-[#111827] leading-[1.1] drop-shadow-[0_1px_3px_rgba(255,255,255,0.3)]"
                 typingSpeed={50}
               />
-            </h1>
+            </p>
             <p className="text-lg text-[#1F2937] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_1px_2px_rgba(255,255,255,0.25)]">
               {isHiringMode
                 ? 'Waymaker partners with high-growth and enterprise companies to place executive and technical talent who actually ship real products and outcomes—not just fill seats.'

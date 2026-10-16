@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Chip } from '../ui/Chip';
+import { publicAsset } from '../../lib/brand';
 
-const benImage = '/assets/ben.png';
-const mattImage = '/assets/matt.png';
+const benImage = publicAsset('assets/ben.webp');
+const mattImage = publicAsset('assets/matt.webp');
 
 export function SearchGroupFounders() {
   const [hoveredFounder, setHoveredFounder] = useState<number | null>(null);
@@ -86,6 +87,8 @@ export function SearchGroupFounders() {
                           <img
                             src={founders[0].image}
                             alt={founders[0].name}
+                            width={630}
+                            height={967}
                             style={{ objectPosition: 'center -15px' }}
                             className={`w-full h-full object-cover transition-all duration-300 ${
                               hoveredFounder === 0 ? 'grayscale-0 scale-105' : 'grayscale'
@@ -126,6 +129,8 @@ export function SearchGroupFounders() {
                           <img
                             src={founders[1].image}
                             alt={founders[1].name}
+                            width={645}
+                            height={896}
                             className={`w-full h-full object-cover transition-all duration-300 ${
                               hoveredFounder === 1 ? 'grayscale-0 scale-105' : 'grayscale'
                             }`}
@@ -173,6 +178,8 @@ export function SearchGroupFounders() {
                         <img
                           src={founders[0].image}
                           alt={founders[0].name}
+                          width={630}
+                          height={967}
                           style={{ objectPosition: 'center -15px' }}
                           className={`w-full h-full object-cover transition-all duration-300 ${
                             hoveredFounder === 0 ? 'grayscale-0 scale-105' : 'grayscale'
@@ -238,6 +245,8 @@ export function SearchGroupFounders() {
                         <img
                           src={founders[1].image}
                           alt={founders[1].name}
+                          width={645}
+                          height={896}
                           className={`w-full h-full object-cover transition-all duration-300 ${
                             hoveredFounder === 1 ? 'grayscale-0 scale-105' : 'grayscale'
                           }`}

@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
 import { PersonaToggle } from './ui/PersonaToggle';
+import { BrandToggle } from './ui/BrandToggle';
 import { ContactButton } from './ui/ContactButton';
 import { useMode } from '../contexts/ModeContext';
+import { publicAsset } from '../lib/brand';
 
-const logoImage = '/assets/small-logo.png';
+const logoImage = publicAsset('assets/small-logo.webp');
 
-export function Navigation({ onBackToSplash }: { onBackToSplash: () => void }) {
+export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { mode, setMode } = useMode();
 
@@ -45,13 +47,10 @@ export function Navigation({ onBackToSplash }: { onBackToSplash: () => void }) {
           <div className="flex items-center justify-between h-20">
             {/* Logo - Left Group */}
             <button 
-              onClick={() => {
-                onBackToSplash();
-                window.scrollTo(0, 0);
-              }}
-              className="flex items-center hover:opacity-80 transition-opacity"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center hover:opacity-80 transition-opacity shrink-0"
             >
-              <img src={logoImage} alt="WayMaker" className="h-11" />
+              <img src={logoImage} alt="WayMaker" width={3140} height={792} className="h-9 lg:h-11 w-auto" />
             </button>
 
             {/* Desktop Navigation - Center Group */}
@@ -68,19 +67,20 @@ export function Navigation({ onBackToSplash }: { onBackToSplash: () => void }) {
               ))}
             </div>
 
-            {/* Right Group - Persona Toggle & CTA */}
-            <div className="hidden lg:flex items-center gap-4">
-              <PersonaToggle />
-              <ContactButton onClick={() => scrollToSection('#contact')} />
+            <div className="flex items-center gap-3">
+              <BrandToggle />
+              <div className="hidden lg:flex items-center gap-4">
+                <PersonaToggle />
+                <ContactButton onClick={() => scrollToSection('#contact')} />
+              </div>
+              <button
+                className="lg:hidden p-2 text-[#9CA3AF] hover:text-[#F9FAFB] transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              >
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-[#9CA3AF] hover:text-[#F9FAFB] transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </nav>

@@ -1,6 +1,7 @@
 import { Button } from './ui/Button';
 import { useMode } from '../contexts/ModeContext';
 import { TypingEffect } from './TypingEffect';
+import { publicAsset } from '../lib/brand';
 import { useRef, useEffect } from 'react';
 
 export function Hero() {
@@ -32,9 +33,13 @@ export function Hero() {
         loop
         muted
         playsInline
+        preload="metadata"
+        poster={publicAsset('videos/defense-poster.jpg')}
+        width={1920}
+        height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="https://github.com/Patrick-Sherlund/waymaker/raw/refs/heads/master/WAYMAKER-DEFENSE.mp4" type="video/mp4" />
+        <source src={publicAsset('videos/WAYMAKER-DEFENSE.mp4')} type="video/mp4" />
       </video>
 
       {/* Dark Overlay */}
@@ -55,16 +60,16 @@ export function Hero() {
         {/* Centered Content */}
         <div className="max-w-[1040px] mx-auto text-center space-y-8">
           <div className="space-y-6">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#FCA5A5] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-              Executive & Defense Tech Recruiting
-            </p>
-            <h1 className="text-5xl lg:text-7xl text-white leading-[1.1] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+            <h1 className="text-xs uppercase tracking-[0.2em] text-[#FCA5A5] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+              Defense Tech Executive & Cleared Talent Recruiting
+            </h1>
+            <p className="text-5xl lg:text-7xl text-white leading-[1.1] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               <TypingEffect 
                 text="You are who you hire."
                 className="text-5xl lg:text-7xl text-white leading-[1.1] drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
                 typingSpeed={50}
               />
-            </h1>
+            </p>
             <p className="text-lg text-[#E5E7EB] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
               {isHiringMode
                 ? 'Waymaker partners with defense technology companies to place executive and technical talent who actually ship mission-critical capabilities-not just fill seats.'

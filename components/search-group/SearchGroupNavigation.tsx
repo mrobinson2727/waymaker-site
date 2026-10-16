@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { PersonaToggle } from '../ui/PersonaToggle';
-import { useMode } from '../../contexts/ModeContext';
+import { BrandToggle } from '../ui/BrandToggle';
+import { publicAsset } from '../../lib/brand';
 
-const logoImage = '/assets/waymaker-logo-regular-small.png';
+const logoImage = publicAsset('assets/waymaker-logo-regular-small.webp');
 
-export function SearchGroupNavigation({ onBackToSplash }: { onBackToSplash: () => void }) {
+export function SearchGroupNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
@@ -32,13 +33,10 @@ export function SearchGroupNavigation({ onBackToSplash }: { onBackToSplash: () =
           <div className="flex items-center justify-between h-20">
             {/* Logo - Left Group */}
             <button 
-              onClick={() => {
-                onBackToSplash();
-                window.scrollTo(0, 0);
-              }}
-              className="flex items-center hover:opacity-80 transition-opacity"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="flex items-center hover:opacity-80 transition-opacity shrink-0"
             >
-              <img src={logoImage} alt="WayMaker" className="h-11" />
+              <img src={logoImage} alt="WayMaker" width={1024} height={296} className="h-9 lg:h-11 w-auto" />
             </button>
 
             {/* Desktop Navigation - Center Group */}
@@ -55,24 +53,25 @@ export function SearchGroupNavigation({ onBackToSplash }: { onBackToSplash: () =
               ))}
             </div>
 
-            {/* Right Group - Persona Toggle & CTA */}
-            <div className="hidden lg:flex items-center gap-4">
-              <PersonaToggle theme="light" />
-              <button 
-                onClick={() => scrollToSection('#contact')}
-                className="px-4 py-2 rounded-lg bg-[#DC2626] text-white hover:bg-[#B91C1C] transition-colors text-sm"
+            <div className="flex items-center gap-3">
+              <BrandToggle theme="light" />
+              <div className="hidden lg:flex items-center gap-4">
+                <PersonaToggle theme="light" />
+                <button 
+                  onClick={() => scrollToSection('#contact')}
+                  className="px-4 py-2 rounded-lg bg-[#DC2626] text-white hover:bg-[#B91C1C] transition-colors text-sm"
+                >
+                  Talk to our team
+                </button>
+              </div>
+              <button
+                className="lg:hidden p-2 text-[#6B7280] hover:text-[#111827] transition-colors"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
-                Talk to our team
+                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-[#6B7280] hover:text-[#111827] transition-colors"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </nav>

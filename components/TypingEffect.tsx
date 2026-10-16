@@ -13,10 +13,10 @@ export function TypingEffect({
   typingSpeed = 50,
   cursorBlinkSpeed = 530
 }: TypingEffectProps) {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState(text);
+  const [currentIndex, setCurrentIndex] = useState(text.length);
   const [showCursor, setShowCursor] = useState(true);
-  const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [isTypingComplete, setIsTypingComplete] = useState(true);
 
   // Typing effect
   useEffect(() => {
