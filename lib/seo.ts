@@ -5,6 +5,7 @@ export const PRODUCTION_ORIGIN = 'https://www.waymakerstaffing.com'
 
 const LOGO_URL = `${PRODUCTION_ORIGIN}/assets/waymaker-logo-regular-small.webp`
 const ORG_ID = `${PRODUCTION_ORIGIN}/#organization`
+export const COMPANY_LINKEDIN = 'https://www.linkedin.com/company/waymaker-staffing-and-recruiting/'
 
 export function productionUrl(page: SitePage): string {
   if (page === 'waymaker') return `${PRODUCTION_ORIGIN}/waymaker/`
@@ -26,6 +27,7 @@ export function structuredData(page: SitePage) {
     logo: LOGO_URL,
     image: LOGO_URL,
     email: 'info@waymakerstaffing.com',
+    sameAs: [COMPANY_LINKEDIN],
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Dallas–Fort Worth',

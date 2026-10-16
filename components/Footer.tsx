@@ -1,4 +1,5 @@
 import { pathForPage } from '../lib/brand';
+import { COMPANY_LINKEDIN } from '../lib/seo';
 
 export function Footer({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
   const muted = theme === 'light' ? 'text-[#6B7280]' : 'text-[#4B4B55]';
@@ -17,6 +18,15 @@ export function Footer({ theme = 'dark' }: { theme?: 'light' | 'dark' }) {
           <p>{theme === 'light' ? 'Waymaker - Executive & Technical Search' : 'Waymaker - Executive & Defense Tech Recruiting'}</p>
           <p>© 2026 Waymaker · Dallas–Fort Worth, Texas · Website designed by Patrick Sherlund</p>
           <p>
+            <a
+              href={COMPANY_LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${link} underline underline-offset-4`}
+            >
+              LinkedIn
+            </a>
+            <span className="mx-3" aria-hidden="true">·</span>
             <a href={pathForPage('privacy')} className={`${link} underline underline-offset-4`}>
               Privacy
             </a>
